@@ -8,3 +8,29 @@
 3. **Regularly Scan Images for Vulnerabilities**: Use tools like SonarQube to scan images for known vulnerabilities.
 4. **Use Minimal Base Images**: Choose minimal base images like `alpine` to reduce the attack surface.
 5. **Implement Resource Limits**: Set CPU and memory limits to prevent resource exhaustion attacks
+
+### Dockerfile Example
+The Dockerfile implementing one of the best practices (running containers as non-root users) is included in this directory.
+
+## Kubernetes Security Configuration
+
+### Security Features
+1. **Role-Based Access Control (RBAC)**: RBAC restricts access to the Kubernetes API based on the roles assigned to users and applications. This ensures that only authorized entities can perform specific actions.
+2. **Network Policies**: Network policies define how pods communicate with each other and with other network endpoints. They help enforce isolation and limit the blast radius of a compromised pod.
+3. **Pod Security Policies (PSP)**: PSPs control the security settings applied to pods, such as restricting the use of privileged containers, enforcing read-only root file systems, and setting user IDs.
+
+### Kubernetes yaml configuration that includes securityContext settings for a pod.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  containers:
+  - name: secure-container
+    image: nginx
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 3000
+      fsGroup: 2000
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
