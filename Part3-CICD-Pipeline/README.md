@@ -5,7 +5,7 @@ This directory contains the configuration files and scripts for setting up a CI/
 
 ## Files
 - `main.tf`: Terraform script to automate the deployment of a web server on a virtual machine.
-- `github-actions.yml`: GitHub Actions workflow file for building, testing, and deploying a serverless application to AWS Lambda.
+- `CI_CD with GitHub Actions.yaml`: GitHub Actions workflow file for building, testing, and deploying a serverless application to AWS Lambda.
 
 ## Instructions
 
